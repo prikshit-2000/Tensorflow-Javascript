@@ -56,7 +56,7 @@ async function train (model,data){
 return model.fit(trainXs,trainYs,    {
 		batchSize : BATCH_SIZE,
 		validationData  : [testXs,testYs],
-		epochs : 40,
+		epochs : 20,
 		shuffle : true,
 		callbacks : fitCallbacks
 	});
