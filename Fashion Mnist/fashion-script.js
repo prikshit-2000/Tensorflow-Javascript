@@ -128,7 +128,7 @@ function init() {
     clearButton.addEventListener("click", erase);
 }
 async function getloadedModel() {
-    model = await tf.loadLayersModel('https://github.com/prikshit-2000/Tensorflow-Javascript/blob/main/Fashion%20Mnist/my_model.json');
+    model = await tf.loadLayersModel('my_model.json');
 }
 
 async function run() {
