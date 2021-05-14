@@ -129,7 +129,7 @@ function init() {
     clearButton = document.getElementById('cb');
     clearButton.addEventListener("click", erase);
 }
- function getloadedModel() {
+ async function getloadedModel() {
     
    const  model = await tf.loadLayersModel('./my_model.json');
     
