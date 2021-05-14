@@ -99,6 +99,7 @@ function erase() {
 function predict() {
     var raw = tf.browser.fromPixels(rawImage,1);
     var resized = tf.image.resizeBilinear(raw, [28,28]);
+    raw  = tf.cast(raw, 'float32');
     var tensor = resized.expandDims(0);
    
     var prediction = model.predict(tensor);
@@ -128,6 +129,7 @@ function init() {
     clearButton.addEventListener("click", erase);
 }
 async function getloadedModel() {
+    
     model = await tf.loadLayersModel('my_model.json');
 }
 
