@@ -129,7 +129,7 @@ function init() {
 }
 async function getloadedModel() {
     
-   const  model = await tf.loadModel('./my_model.json');
+   const  model = await tf.loadLayersModel('./my_model.json');
   
 
 }
