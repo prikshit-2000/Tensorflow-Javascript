@@ -96,7 +96,7 @@ function erase() {
     ctx.fillRect(0,0,280,280);
 }
     
-function predict() {
+function predict(model) {
     var raw = tf.browser.fromPixels(rawImage,1);
     var resized = tf.image.resizeBilinear(raw, [28,28]);
     var tensor = resized.expandDims(0);
@@ -113,7 +113,7 @@ function predict() {
 }
     
 
-function init() {
+function init(model) {
     canvas = document.getElementById('canvas');
     rawImage = document.getElementById('canvasimg');
     ctx = canvas.getContext("2d");
@@ -123,7 +123,7 @@ function init() {
     canvas.addEventListener("mousedown", setPosition);
     canvas.addEventListener("mouseenter", setPosition);
     saveButton = document.getElementById('sb');
-    saveButton.addEventListener("click", predict);
+    saveButton.addEventListener("click", predict(model));
     clearButton = document.getElementById('cb');
     clearButton.addEventListener("click", erase);
 }
@@ -143,7 +143,7 @@ async function run() {
     // tfvis.show.modelSummary({name: 'Model Architecture'}, m_vis);
     
     
-    init();
+    init(model);
     alert("Training is done, try classifying your drawings!");
 }
 
