@@ -97,11 +97,16 @@ function erase() {
 }
     
 function predict() {
+    
+    const model = getloadedModel(); 
+    model.then(function (res) {
     var raw = tf.browser.fromPixels(rawImage,1);
     var resized = tf.image.resizeBilinear(raw, [28,28]);
     var tensor = resized.expandDims(0);
-    const model = getloadedModel(); 
-    var prediction = model.predict(tensor);
+    const prediction = res.predict(tensor);
+    
+}); 
+//     var prediction = model.predict(tensor);
     var pIndex = tf.argMax(prediction, 1).dataSync();
     
     var classNames = ["T-shirt/top", "Trouser", "Pullover", 
@@ -129,8 +134,8 @@ function init() {
 }
 async function getloadedModel() {
     
-//    const  model = await tf.loadLayersModel('./my_model.json');
-    const  model  = await tf.loadModel('file://./my_model.json');
+   const  model = await tf.loadLayersModel('./my_model.json');
+    
   
 
 }
