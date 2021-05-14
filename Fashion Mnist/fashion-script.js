@@ -97,7 +97,7 @@ function erase() {
 }
     
 function predict() {
-    var raw = tf.browser.fromPixels(rawImage,1);
+    var raw = tf.browser.fromPixels(rawImage,1).cast('float32');
     var resized = tf.image.resizeBilinear(raw, [28,28]);
     var tensor = resized.expandDims(0);
    
