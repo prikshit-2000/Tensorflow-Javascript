@@ -96,11 +96,11 @@ function erase() {
     ctx.fillRect(0,0,280,280);
 }
     
-function predict(model) {
+function predict() {
     var raw = tf.browser.fromPixels(rawImage,1);
     var resized = tf.image.resizeBilinear(raw, [28,28]);
     var tensor = resized.expandDims(0);
-   
+    const model = getloadedModel(); 
     var prediction = model.predict(tensor);
     var pIndex = tf.argMax(prediction, 1).dataSync();
     
@@ -113,7 +113,7 @@ function predict(model) {
 }
     
 
-function init(model) {
+function init() {
     canvas = document.getElementById('canvas');
     rawImage = document.getElementById('canvasimg');
     ctx = canvas.getContext("2d");
@@ -123,7 +123,7 @@ function init(model) {
     canvas.addEventListener("mousedown", setPosition);
     canvas.addEventListener("mouseenter", setPosition);
     saveButton = document.getElementById('sb');
-    saveButton.addEventListener("click", predict(model));
+    saveButton.addEventListener("click", predict);
     clearButton = document.getElementById('cb');
     clearButton.addEventListener("click", erase);
 }
