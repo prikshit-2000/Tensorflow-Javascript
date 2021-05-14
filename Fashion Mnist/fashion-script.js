@@ -143,7 +143,7 @@ async function run() {
     // tfvis.show.modelSummary({name: 'Model Architecture'}, m_vis);
     
     
-    init(model);
+    init();
     alert("Training is done, try classifying your drawings!");
 }
 
