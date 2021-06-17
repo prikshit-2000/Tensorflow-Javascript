@@ -128,7 +128,9 @@ function init() {
     clearButton.addEventListener("click", erase);
 }
 async function getloadedModel() {
-    model = await tf.loadLayersModel('my_model.json');
+    model = await tf.loadLayersModel('my_model.json').then(model => {
+  model.predict();
+});;
 }
 
 async function run() {
