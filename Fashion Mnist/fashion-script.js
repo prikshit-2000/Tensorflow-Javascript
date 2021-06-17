@@ -124,7 +124,7 @@ function init() {
 //     const prediction = res.predict(example);
 //     console.log(prediction);
 // },
-const model = getloadedModel(); 
+model = getloadedModel(); 
 model.then(function (res) {
 async function predict() {
     
