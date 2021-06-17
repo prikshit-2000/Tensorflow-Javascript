@@ -142,7 +142,7 @@ model.then(function (res) {
             
             
     alert(classNames[pIndex]);
-}
+});
     
 
 async function run() {
