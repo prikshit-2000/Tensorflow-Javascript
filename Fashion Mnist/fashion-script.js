@@ -114,18 +114,13 @@ function init() {
 }
  async function getloadedModel() {
     
-   const  model = await tf.loadModel('./my_model.json');
+   const  model = await tf.loadLayersModel('./my_model.json');
     
-  
-
-}
-async function predict() {
-    
-    const model = getloadedModel(); 
-    var raw = tf.browser.fromPixels(rawImage,1);
-    var resized = tf.image.resizeBilinear(raw, [28,28]);
-    var tensor = resized.expandDims(0);
-    var prediction = model.predict(tensor);
+   const model = getloadedModel(); 
+   var raw = tf.browser.fromPixels(rawImage,1);
+   var resized = tf.image.resizeBilinear(raw, [28,28]);
+   var tensor = resized.expandDims(0);
+   var prediction = model.predict(tensor);
   
     var pIndex = tf.argMax(prediction, 1).dataSync();
     
@@ -135,7 +130,12 @@ async function predict() {
             
             
     alert(classNames[pIndex]);
+
 }
+// async function predict() {
+    
+   
+// }
     
 
 async function run() {
