@@ -96,7 +96,7 @@ function erase() {
     ctx.fillRect(0,0,280,280);
 }
     
-function predict() {
+async function predict() {
     
     const model = getloadedModel(); 
     var raw = tf.browser.fromPixels(rawImage,1);
