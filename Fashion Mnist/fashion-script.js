@@ -129,22 +129,7 @@ function init() {
 }
 async function getloadedModel() {
     model = await tf.loadLayersModel('my_model.json').then(model => {
-  model.predict(){
-    var raw = tf.browser.fromPixels(rawImage,1).cast('float32');
-    var resized = tf.image.resizeBilinear(raw, [28,28]);
-    var tensor = resized.expandDims(0);
-   
-    var prediction = model.predict(tensor);
-    var pIndex = tf.argMax(prediction, 1).dataSync();
-    
-    var classNames = ["T-shirt/top", "Trouser", "Pullover", 
-                      "Dress", "Coat", "Sandal", "Shirt",
-                      "Sneaker",  "Bag", "Ankle boot"];
-            
-            
-    alert(classNames[pIndex]);
-};
-});;
+  model.predict()});
 }
 
 async function run() {
