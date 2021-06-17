@@ -96,24 +96,7 @@ function erase() {
     ctx.fillRect(0,0,280,280);
 }
     
-async function predict() {
-    
-    const model = getloadedModel(); 
-    var raw = tf.browser.fromPixels(rawImage,1);
-    var resized = tf.image.resizeBilinear(raw, [28,28]);
-    var tensor = resized.expandDims(0);
-    var prediction = model.predict(tensor);
-  
-    var pIndex = tf.argMax(prediction, 1).dataSync();
-    
-    var classNames = ["T-shirt/top", "Trouser", "Pullover", 
-                      "Dress", "Coat", "Sandal", "Shirt",
-                      "Sneaker",  "Bag", "Ankle boot"];
-            
-            
-    alert(classNames[pIndex]);
-}
-    
+
 
 function init() {
     canvas = document.getElementById('canvas');
@@ -136,6 +119,24 @@ function init() {
   
 
 }
+async function predict() {
+    
+    const model = getloadedModel(); 
+    var raw = tf.browser.fromPixels(rawImage,1);
+    var resized = tf.image.resizeBilinear(raw, [28,28]);
+    var tensor = resized.expandDims(0);
+    var prediction = model.predict(tensor);
+  
+    var pIndex = tf.argMax(prediction, 1).dataSync();
+    
+    var classNames = ["T-shirt/top", "Trouser", "Pullover", 
+                      "Dress", "Coat", "Sandal", "Shirt",
+                      "Sneaker",  "Bag", "Ankle boot"];
+            
+            
+    alert(classNames[pIndex]);
+}
+    
 
 async function run() {
     const data = new FMnistData();
