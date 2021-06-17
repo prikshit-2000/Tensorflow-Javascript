@@ -126,7 +126,7 @@ function init() {
 // },
 model = getloadedModel(); 
 model.then(function (res) {
-async function predict() {
+// async function predict() {
     
      
    var raw = tf.browser.fromPixels(rawImage,1);
