@@ -108,7 +108,7 @@ function init() {
     canvas.addEventListener("mousedown", setPosition);
     canvas.addEventListener("mouseenter", setPosition);
     saveButton = document.getElementById('sb');
-    saveButton.addEventListener("click", predict);
+    saveButton.addEventListener("click", res);
     clearButton = document.getElementById('cb');
     clearButton.addEventListener("click", erase);
 }
@@ -119,13 +119,20 @@ function init() {
 
 
 }
+
+//     const example = tf.browser.fromPixels(canvas);
+//     const prediction = res.predict(example);
+//     console.log(prediction);
+// },
+const model = getloadedModel(); 
+model.then(function (res) {
 async function predict() {
     
-    const model = getloadedModel(); 
+     
    var raw = tf.browser.fromPixels(rawImage,1);
    var resized = tf.image.resizeBilinear(raw, [28,28]);
    var tensor = resized.expandDims(0);
-   var prediction = model.predict(tensor);
+   var prediction = res.predict(tensor);
   
     var pIndex = tf.argMax(prediction, 1).dataSync();
     
@@ -135,7 +142,7 @@ async function predict() {
             
             
     alert(classNames[pIndex]);
-}
+});
     
 
 async function run() {
