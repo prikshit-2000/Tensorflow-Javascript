@@ -116,7 +116,12 @@ function init() {
     
    const  model = await tf.loadLayersModel('./my_model.json');
     
-//    const model = getloadedModel(); 
+
+
+}
+async function predict() {
+    
+    const model = getloadedModel(); 
    var raw = tf.browser.fromPixels(rawImage,1);
    var resized = tf.image.resizeBilinear(raw, [28,28]);
    var tensor = resized.expandDims(0);
@@ -130,12 +135,7 @@ function init() {
             
             
     alert(classNames[pIndex]);
-
 }
-// async function predict() {
-    
-   
-// }
     
 
 async function run() {
