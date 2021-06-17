@@ -142,7 +142,7 @@ async function predict() {
             
             
     alert(classNames[pIndex]);
-});
+}
     
 
 async function run() {
